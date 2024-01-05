@@ -11,10 +11,16 @@ import 'package:flutter/material.dart';
 final CharacterShortcutEvent greaterCommand = CharacterShortcutEvent(
   key: 'show the greater menu',
   character: '>',
-  handler: (editorState) async => await _showGreaterMenu(
-    editorState,
-    standardSelectionMenuItems,
-  ),
+  handler: (editorState) async {
+    final context = editorState.getNodeAtPath([0])!.context!;
+    return await _showGreaterMenu(
+      editorState,
+      standardSelectionMenuItems,
+      style: Theme.of(context).brightness == Brightness.dark
+          ? SelectionMenuStyle.dark
+          : SelectionMenuStyle.light,
+    );
+  },
 );
 
 CharacterShortcutEvent customGreaterCommand(
