@@ -286,19 +286,6 @@ final List<SelectionMenuItem> standardSelectionMenuItems = [
     },
   ),
   SelectionMenuItem(
-    name: AppFlowyEditorL10n.current.image,
-    icon: (editorState, isSelected, style) => SelectionMenuIconWidget(
-      name: 'image',
-      isSelected: isSelected,
-      style: style,
-    ),
-    keywords: ['image'],
-    handler: (editorState, menuService, context) {
-      final container = Overlay.of(context);
-      showImageMenu(container, editorState, menuService);
-    },
-  ),
-  SelectionMenuItem(
     name: AppFlowyEditorL10n.current.bulletedList,
     icon: (editorState, isSelected, style) => SelectionMenuIconWidget(
       name: 'bulleted_list',
@@ -347,5 +334,4 @@ final List<SelectionMenuItem> standardSelectionMenuItems = [
     },
   ),
   dividerMenuItem,
-  tableMenuItem,
 ];
