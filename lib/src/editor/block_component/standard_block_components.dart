@@ -85,7 +85,7 @@ final List<CharacterShortcutEvent> standardCharacterShortcutEvents = [
   formatHyphenFilledBracketsToCheckedBox,
 
   // slash
-  slashCommand,
+  greaterCommand,
 
   // divider
   convertMinusesToDivider,

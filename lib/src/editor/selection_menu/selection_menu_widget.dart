@@ -20,7 +20,7 @@ class SelectionMenuItem {
   }) {
     this.handler = (editorState, menuService, context) {
       if (deleteSlash) {
-        _deleteSlash(editorState);
+        _deleteGreater(editorState);
       }
       // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       handler(editorState, menuService, context);
@@ -46,7 +46,7 @@ class SelectionMenuItem {
 
   bool deleteSlash = true;
 
-  void _deleteSlash(EditorState editorState) {
+  void _deleteGreater(EditorState editorState) {
     final selection = editorState.selection;
     if (selection == null || !selection.isCollapsed) {
       return;
@@ -58,8 +58,8 @@ class SelectionMenuItem {
     }
     final end = selection.start.offset;
     final lastSlashIndex =
-        delta.toPlainText().substring(0, end).lastIndexOf('/');
-    // delete all the texts after '/' along with '/'
+        delta.toPlainText().substring(0, end).lastIndexOf('>');
+    // delete all the texts after '>' along with '>'
     final transaction = editorState.transaction
       ..deleteText(
         node,

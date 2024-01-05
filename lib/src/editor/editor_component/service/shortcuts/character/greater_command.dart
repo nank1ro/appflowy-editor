@@ -2,33 +2,33 @@ import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-/// Show the slash menu
+/// Show the greater menu
 ///
 /// - support
 ///   - desktop
 ///   - web
 ///
-final CharacterShortcutEvent slashCommand = CharacterShortcutEvent(
-  key: 'show the slash menu',
-  character: '/',
-  handler: (editorState) async => await _showSlashMenu(
+final CharacterShortcutEvent greaterCommand = CharacterShortcutEvent(
+  key: 'show the greater menu',
+  character: '>',
+  handler: (editorState) async => await _showGreaterMenu(
     editorState,
     standardSelectionMenuItems,
   ),
 );
 
-CharacterShortcutEvent customSlashCommand(
+CharacterShortcutEvent customGreaterCommand(
   List<SelectionMenuItem> items, {
-  bool shouldInsertSlash = true,
+  bool shouldInsertGreater = true,
   SelectionMenuStyle style = SelectionMenuStyle.light,
 }) {
   return CharacterShortcutEvent(
-    key: 'show the slash menu',
-    character: '/',
-    handler: (editorState) => _showSlashMenu(
+    key: 'show the greater menu',
+    character: '>',
+    handler: (editorState) => _showGreaterMenu(
       editorState,
       items,
-      shouldInsertSlash: shouldInsertSlash,
+      shouldInsertGreater: shouldInsertGreater,
       style: style,
     ),
   );
@@ -44,10 +44,10 @@ final Set<String> supportSlashMenuNodeWhiteList = {
 };
 
 SelectionMenuService? _selectionMenuService;
-Future<bool> _showSlashMenu(
+Future<bool> _showGreaterMenu(
   EditorState editorState,
   List<SelectionMenuItem> items, {
-  bool shouldInsertSlash = true,
+  bool shouldInsertGreater = true,
   SelectionMenuStyle style = SelectionMenuStyle.light,
 }) async {
   if (PlatformExtension.isMobile) {
@@ -73,25 +73,25 @@ Future<bool> _showSlashMenu(
   final node = editorState.getNodeAtPath(selection.start.path);
 
   // only enable in white-list nodes
-  if (node == null || !_isSupportSlashMenuNode(node)) {
+  if (node == null || !_isSupportGreaterMenuNode(node)) {
     return false;
   }
 
-  // insert the slash character
-  if (shouldInsertSlash) {
+  // insert the greater character
+  if (shouldInsertGreater) {
     if (kIsWeb) {
       // Have no idea why the focus will lose after inserting on web.
       keepEditorFocusNotifier.increase();
-      await editorState.insertTextAtPosition('/', position: selection.start);
+      await editorState.insertTextAtPosition('>', position: selection.start);
       WidgetsBinding.instance.addPostFrameCallback(
         (timeStamp) => keepEditorFocusNotifier.decrease(),
       );
     } else {
-      await editorState.insertTextAtPosition('/', position: selection.start);
+      await editorState.insertTextAtPosition('>', position: selection.start);
     }
   }
 
-  // show the slash menu
+  // show the greater menu
   () {
     // this code is copied from the the old editor.
     // TODO: refactor this code
@@ -101,7 +101,7 @@ Future<bool> _showSlashMenu(
         context: context,
         editorState: editorState,
         selectionMenuItems: items,
-        deleteSlashByDefault: shouldInsertSlash,
+        deleteSlashByDefault: shouldInsertGreater,
         style: style,
       );
       _selectionMenuService?.show();
@@ -111,10 +111,10 @@ Future<bool> _showSlashMenu(
   return true;
 }
 
-bool _isSupportSlashMenuNode(Node node) {
+bool _isSupportGreaterMenuNode(Node node) {
   var result = supportSlashMenuNodeWhiteList.contains(node.type);
   if (node.level > 1 && node.parent != null) {
-    return result && _isSupportSlashMenuNode(node.parent!);
+    return result && _isSupportGreaterMenuNode(node.parent!);
   }
   return result;
 }

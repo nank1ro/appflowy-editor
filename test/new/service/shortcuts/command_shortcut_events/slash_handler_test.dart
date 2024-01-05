@@ -8,8 +8,8 @@ void main() async {
     TestWidgetsFlutterBinding.ensureInitialized();
   });
 
-  group('slash_handler.dart', () {
-    testWidgets('Presses / to trigger selection menu in 0 index',
+  group('greater_handler.dart', () {
+    testWidgets('Presses > to trigger selection menu in 0 index',
         (tester) async {
       const text = 'Welcome to Appflowy 😁';
       const lines = 3;
@@ -18,7 +18,7 @@ void main() async {
 
       await editor.startTesting();
       await editor.updateSelection(Selection.single(path: [1], startOffset: 0));
-      await editor.pressKey(character: '/');
+      await editor.pressKey(character: '>');
       await tester.pumpAndSettle(const Duration(milliseconds: 1000));
 
       expect(
@@ -38,7 +38,7 @@ void main() async {
       );
     });
 
-    testWidgets('Presses / to trigger selection menu in not 0 index',
+    testWidgets('Presses > to trigger selection menu in not 0 index',
         (tester) async {
       const text = 'Welcome to Appflowy 😁';
       const lines = 3;
@@ -47,7 +47,7 @@ void main() async {
 
       await editor.startTesting();
       await editor.updateSelection(Selection.single(path: [1], startOffset: 5));
-      await editor.pressKey(character: '/');
+      await editor.pressKey(character: '>');
 
       await tester.pumpAndSettle(const Duration(milliseconds: 1000));
 

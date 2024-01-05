@@ -10,4 +10,4 @@ export 'format_single_character/format_strikethrough.dart';
 export 'insert_newline.dart';
 export 'markdown_link_shortcut_event.dart';
 export 'markdown_syntax_character_shortcut_events.dart';
-export 'slash_command.dart';
+export 'greater_command.dart';

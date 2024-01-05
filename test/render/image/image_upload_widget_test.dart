@@ -13,7 +13,7 @@ void main() {
       final selection = Selection.single(path: [0], startOffset: 19);
       await editor.updateSelection(selection);
 
-      await editor.pressKey(character: '/');
+      await editor.pressKey(character: '>');
       await tester.pumpAndSettle();
 
       expect(find.byType(SelectionMenuWidget), findsOneWidget);
