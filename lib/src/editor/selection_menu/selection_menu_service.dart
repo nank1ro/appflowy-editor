@@ -285,7 +285,7 @@ final List<SelectionMenuItem> standardSelectionMenuItems = [
     },
   ),
   SelectionMenuItem(
-    name: AppFlowyEditorL10n.current.bulletedList,
+    getName: () => AppFlowyEditorL10n.current.bulletedList,
     icon: (editorState, isSelected, style) => SelectionMenuIconWidget(
       name: 'bulleted_list',
       isSelected: isSelected,
