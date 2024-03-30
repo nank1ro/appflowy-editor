@@ -172,6 +172,7 @@ class _ParagraphBlockComponentWidgetState
             textDirection: textDirection,
             cursorColor: editorState.editorStyle.cursorColor,
             selectionColor: editorState.editorStyle.selectionColor,
+            cursorWidth: editorState.editorStyle.cursorWidth,
           ),
         ],
       ),
@@ -190,6 +191,7 @@ class _ParagraphBlockComponentWidgetState
       node: node,
       delegate: this,
       listenable: editorState.selectionNotifier,
+      remoteSelection: editorState.remoteSelections,
       blockColor: editorState.editorStyle.selectionColor,
       supportTypes: const [
         BlockSelectionType.block,

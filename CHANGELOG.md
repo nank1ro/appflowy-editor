@@ -1,3 +1,46 @@
+## 2.3.3
+* feat: word counter service by @Xazin in [706](https://github.com/AppFlowy-IO/appflowy-editor/pull/706)
+* feat: support scaling the svg by @LucasXu0 in [722](https://github.com/AppFlowy-IO/appflowy-editor/pull/722)
+* feat: support selecting word on iOS through long pressing by @LucasXu0 in [728](https://github.com/AppFlowy-IO/appflowy-editor/pull/728)
+* fix: Slash command menu bad positioning in Web Version by @dagyu in [709](https://github.com/AppFlowy-IO/appflowy-editor/pull/709)
+* fix: unable to export image block in markdown format by @rileyhawk1417 in [713](https://github.com/AppFlowy-IO/appflowy-editor/pull/713)
+* fix: unable to click the items in a long list by @LucasXu0 in [725](https://github.com/AppFlowy-IO/appflowy-editor/pull/725)
+* fix: resolve data loss issue during block type conversion by @LucasXu0 in [726](https://github.com/AppFlowy-IO/appflowy-editor/pull/726)
+* fix: unable to redo/undo in lists by @LucasXu0 in [727](https://github.com/AppFlowy-IO/appflowy-editor/pull/727)
+* fix: flutter analyze by @LucasXu0 in [730](https://github.com/AppFlowy-IO/appflowy-editor/pull/730)
+* chore: upgrade flutter version to 3.19.0 by @LucasXu0 in [719](https://github.com/AppFlowy-IO/appflowy-editor/pull/719)
+* chore: rename highlight color to background color by @LucasXu0 in [729](https://github.com/AppFlowy-IO/appflowy-editor/pull/729)
+
+## 2.3.2
+* fix: platform api cause error on web platform.
+
+## 2.3.1
+* feat: backslash to ignore shortcut event by @hyj1204 in [#635](https://github.com/AppFlowy-IO/appflowy-editor/pull/635)
+* feat: support formatting greater hyphen to single arrow by @Jayaprakash-dev in [#665](https://github.com/AppFlowy-IO/appflowy-editor/pull/665)
+* feat: parse nested numbered list by @pithuene in [#674](https://github.com/AppFlowy-IO/appflowy-editor/pull/674)
+* feat: optimize Enter operation by @q200892907 in [#673](https://github.com/AppFlowy-IO/appflowy-editor/pull/673)
+* feat: add contentInsertionConfiguration to editor and text input service by @stevenosse in [#691](https://github.com/AppFlowy-IO/appflowy-editor/pull/691)
+* fix: the menu dismissed after selecting block style by @LucasXu0 in [#670](https://github.com/AppFlowy-IO/appflowy-editor/pull/670)
+* fix: solve the problem that Chinese IME cannot continue deleting after deleting input content by @q200892907 in [#672](https://github.com/AppFlowy-IO/appflowy-editor/pull/672)
+* fix: the magnifier doesn't disappear when the selection is collapsed by @LucasXu0 in [#675](https://github.com/AppFlowy-IO/appflowy-editor/pull/675)
+* fix: headingBlockComponentBuilder doesn't use placeholderTextStyle by @LucasXu0 in [#677](https://github.com/AppFlowy-IO/appflowy-editor/pull/677)
+* fix: unable to use slide gesture to close keyboard by @LucasXu0 in [#676](https://github.com/AppFlowy-IO/appflowy-editor/pull/676)
+* fix: upgrade markdown to 7.2.1 by @Xazin in [#686](https://github.com/AppFlowy-IO/appflowy-editor/pull/686)
+* fix: windows chinese ime issue by @q200892907 in [#682](https://github.com/AppFlowy-IO/appflowy-editor/pull/682)
+* fix: add support for breakline and divider by @penkzhou in [#690](https://github.com/AppFlowy-IO/appflowy-editor/pull/690)
+* chore: localize more items by @jpenna in [#680](https://github.com/AppFlowy-IO/appflowy-editor/pull/680)
+* chore: fix pasting keeps current node by @jpenna in [#689](https://github.com/AppFlowy-IO/appflowy-editor/pull/689)
+* chore: translate commands by @jpenna in [#687](https://github.com/AppFlowy-IO/appflowy-editor/pull/687)
+
+## 2.3.0
+* feat: support customizing cursor width by @LucasXu0 in [#654](https://github.com/AppFlowy-IO/appflowy-editor/pull/654)
+* feat: support updating cursor position via spacebar by @LucasXu0 in [#655](https://github.com/AppFlowy-IO/appflowy-editor/pull/655)
+* feat: add markdown divider encoder parser by @hamishjohnson in [#639](https://github.com/AppFlowy-IO/appflowy-editor/pull/639)
+* fix: Chinese input issue by @q200892907 in [#652](https://github.com/AppFlowy-IO/appflowy-editor/pull/652)
+* fix: move cursor up/down issues by @LucasXu0 in [#657](https://github.com/AppFlowy-IO/appflowy-editor/pull/657)
+* fix: ignore parent gesture by @q200892907 in [#660](https://github.com/AppFlowy-IO/appflowy-editor/pull/660)
+* fix: support character deletion while holding down the Shift key by @Jayaprakash-dev in [#659](https://github.com/AppFlowy-IO/appflowy-editor/pull/659)
+
 ## 2.2.0
 * feat: support customizing the mobile magnifier by @LucasXu0 in ([#625](https://github.com/AppFlowy-IO/appflowy-editor/pull/625))
 * feat: support keep editor focus on mobile by @LucasXu0 in ([#628](https://github.com/AppFlowy-IO/appflowy-editor/pull/628))

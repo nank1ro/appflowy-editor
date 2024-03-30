@@ -100,7 +100,6 @@ Future<bool> _showGreaterMenu(
   // show the greater menu
   () {
     // this code is copied from the the old editor.
-    // TODO: refactor this code
     final context = editorState.getNodeAtPath(selection.start.path)?.context;
     if (context != null) {
       _selectionMenuService = SelectionMenu(

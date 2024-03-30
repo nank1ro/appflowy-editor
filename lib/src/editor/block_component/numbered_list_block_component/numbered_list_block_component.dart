@@ -155,6 +155,7 @@ class _NumberedListBlockComponentWidgetState
               textDirection: textDirection,
               cursorColor: editorState.editorStyle.cursorColor,
               selectionColor: editorState.editorStyle.selectionColor,
+              cursorWidth: editorState.editorStyle.cursorWidth,
             ),
           ),
         ],
@@ -174,6 +175,7 @@ class _NumberedListBlockComponentWidgetState
       node: node,
       delegate: this,
       listenable: editorState.selectionNotifier,
+      remoteSelection: editorState.remoteSelections,
       blockColor: editorState.editorStyle.selectionColor,
       supportTypes: const [
         BlockSelectionType.block,
@@ -208,11 +210,14 @@ class _NumberedListIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final editorState = context.read<EditorState>();
     final text = editorState.editorStyle.textStyleConfiguration.text;
+    final textScaleFactor = editorState.editorStyle.textScaleFactor;
     return Container(
-      constraints: const BoxConstraints(minWidth: 26, minHeight: 22),
+      constraints:
+          const BoxConstraints(minWidth: 26, minHeight: 22) * textScaleFactor,
       padding: const EdgeInsets.only(right: 4.0),
       child: Center(
         child: Text.rich(
+          textScaler: TextScaler.linear(textScaleFactor),
           textHeightBehavior: const TextHeightBehavior(
             applyHeightToFirstAscent: false,
             applyHeightToLastDescent: false,

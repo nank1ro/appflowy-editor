@@ -4,9 +4,12 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:example/pages/collab_editor.dart';
+import 'package:example/pages/collab_selection_editor.dart';
 import 'package:example/pages/customize_theme_for_editor.dart';
 import 'package:example/pages/editor.dart';
 import 'package:example/pages/editor_list.dart';
+import 'package:example/pages/fixed_toolbar_editor.dart';
 import 'package:example/pages/focus_example_for_editor.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
@@ -93,9 +96,7 @@ class _HomePageState extends State<HomePage> {
         surfaceTintColor: Colors.transparent,
         title: const Text('AppFlowy Editor'),
       ),
-      body: SafeArea(
-        child: _buildBody(context),
-      ),
+      body: SafeArea(child: _widgetBuilder(context)),
     );
   }
 
@@ -145,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                 html.toJson(),
               ).toString(),
             );
-            if (mounted) {
+            if (context.mounted) {
               _loadEditor(context, jsonString);
             }
           }),
@@ -160,6 +161,22 @@ class _HomePageState extends State<HomePage> {
 
           // Theme Demo
           _buildSeparator(context, 'Showcases'),
+          _buildListTile(context, 'Collab Editor', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const CollabEditor(),
+              ),
+            );
+          }),
+          _buildListTile(context, 'Collab Selection', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const CollabSelectionEditor(),
+              ),
+            );
+          }),
           _buildListTile(context, 'Custom Theme', () {
             Navigator.push(
               context,
@@ -194,6 +211,14 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           }),
+          _buildListTile(context, 'Fixed Toolbar', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const FixedToolbarExample(),
+              ),
+            );
+          }),
 
           // Encoder Demo
           _buildSeparator(context, 'Export To X Demo'),
@@ -218,10 +243,6 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
-  }
-
-  Widget _buildBody(BuildContext context) {
-    return _widgetBuilder(context);
   }
 
   Widget _buildListTile(

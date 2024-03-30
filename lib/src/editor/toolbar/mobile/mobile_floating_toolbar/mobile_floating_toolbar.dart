@@ -122,8 +122,8 @@ class _MobileFloatingToolbarState extends State<MobileFloatingToolbar>
       _clear();
       final dragMode = editorState.selectionExtraInfo?[selectionDragModeKey];
       if ([
-        MobileSelectionDragMode.leftSelectionHandler,
-        MobileSelectionDragMode.rightSelectionHandler,
+        MobileSelectionDragMode.leftSelectionHandle,
+        MobileSelectionDragMode.rightSelectionHandle,
       ].contains(dragMode)) {
         return;
       }
@@ -178,7 +178,7 @@ class _MobileFloatingToolbarState extends State<MobileFloatingToolbar>
         );
       },
     );
-    Overlay.of(context).insert(_toolbarContainer!);
+    Overlay.of(context, rootOverlay: true).insert(_toolbarContainer!);
     _isToolbarVisible = true;
   }
 

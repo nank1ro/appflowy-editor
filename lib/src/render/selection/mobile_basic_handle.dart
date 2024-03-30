@@ -8,6 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+GlobalKey _leftHandleKey = GlobalKey();
+GlobalKey _rightHandleKey = GlobalKey();
+GlobalKey _collapsedHandleKey = GlobalKey();
+
 enum HandleType {
   none,
   left,
@@ -19,9 +23,9 @@ enum HandleType {
       case HandleType.none:
         throw UnsupportedError('Unsupported handle type');
       case HandleType.left:
-        return MobileSelectionDragMode.leftSelectionHandler;
+        return MobileSelectionDragMode.leftSelectionHandle;
       case HandleType.right:
-        return MobileSelectionDragMode.rightSelectionHandler;
+        return MobileSelectionDragMode.rightSelectionHandle;
       case HandleType.collapsed:
         return MobileSelectionDragMode.cursor;
     }
@@ -37,6 +41,19 @@ enum HandleType {
         return CrossAxisAlignment.start;
       case HandleType.collapsed:
         return CrossAxisAlignment.center;
+    }
+  }
+
+  GlobalKey get key {
+    switch (this) {
+      case HandleType.none:
+        throw UnsupportedError('Unsupported handle type');
+      case HandleType.left:
+        return _leftHandleKey;
+      case HandleType.right:
+        return _rightHandleKey;
+      case HandleType.collapsed:
+        return _collapsedHandleKey;
     }
   }
 }
@@ -142,6 +159,7 @@ class _IOSDragHandle extends _IDragHandle {
     Widget child;
     if (handleType == HandleType.collapsed) {
       child = Container(
+        key: handleType.key,
         width: handleWidth,
         color: handleColor,
         height: handleHeight,
@@ -189,19 +207,25 @@ class _IOSDragHandle extends _IDragHandle {
 
     final editorState = context.read<EditorState>();
     final ballWidth = handleBallWidth;
+    double offset = 0.0;
+    if (handleType == HandleType.left) {
+      offset = ballWidth;
+    } else if (handleType == HandleType.right) {
+      offset = -ballWidth;
+    }
 
     child = GestureDetector(
       behavior: HitTestBehavior.opaque,
       dragStartBehavior: DragStartBehavior.down,
       onPanStart: (details) {
         editorState.service.selectionService.onPanStart(
-          details.translate(0, -ballWidth),
+          details.translate(0, offset),
           handleType.dragMode,
         );
       },
       onPanUpdate: (details) {
         editorState.service.selectionService.onPanUpdate(
-          details.translate(0, -ballWidth),
+          details.translate(0, offset),
           handleType.dragMode,
         );
       },

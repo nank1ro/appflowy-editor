@@ -17,8 +17,10 @@ class EditorStyle {
     this.magnifierSize = const Size(72, 48),
     this.mobileDragHandleBallSize = const Size(8, 8),
     this.mobileDragHandleWidth = 2.0,
+    this.cursorWidth = 2.0,
     this.defaultTextDirection,
     this.enableHapticFeedbackOnAndroid = true,
+    this.textScaleFactor = 1.0,
   });
 
   // The padding of the editor.
@@ -26,6 +28,9 @@ class EditorStyle {
 
   // The cursor color
   final Color cursorColor;
+
+  // The cursor width
+  final double cursorWidth;
 
   // The drag handle color
   // only works on mobile
@@ -66,6 +71,8 @@ class EditorStyle {
   // enable haptic feedback when updating selection by dragging the drag handler
   final bool enableHapticFeedbackOnAndroid;
 
+  final double textScaleFactor;
+
   const EditorStyle.desktop({
     EdgeInsets? padding,
     Color? cursorColor,
@@ -73,6 +80,8 @@ class EditorStyle {
     TextStyleConfiguration? textStyleConfiguration,
     TextSpanDecoratorForAttribute? textSpanDecorator,
     this.defaultTextDirection,
+    this.cursorWidth = 2.0,
+    this.textScaleFactor = 1.0,
   })  : padding = padding ?? const EdgeInsets.symmetric(horizontal: 100),
         cursorColor = cursorColor ?? const Color(0xFF00BCF0),
         selectionColor =
@@ -100,7 +109,9 @@ class EditorStyle {
     this.magnifierSize = const Size(72, 48),
     this.mobileDragHandleBallSize = const Size(8, 8),
     this.mobileDragHandleWidth = 2.0,
+    this.cursorWidth = 2.0,
     this.enableHapticFeedbackOnAndroid = true,
+    this.textScaleFactor = 1.0,
   })  : padding = padding ?? const EdgeInsets.symmetric(horizontal: 20),
         cursorColor = cursorColor ?? const Color(0xFF00BCF0),
         dragHandleColor = dragHandleColor ?? const Color(0xFF00BCF0),
@@ -125,6 +136,8 @@ class EditorStyle {
     Size? mobileDragHandleBallSize,
     double? mobileDragHandleWidth,
     bool? enableHapticFeedbackOnAndroid,
+    double? cursorWidth,
+    double? textScaleFactor,
   }) {
     return EditorStyle(
       padding: padding ?? this.padding,
@@ -142,6 +155,8 @@ class EditorStyle {
           mobileDragHandleWidth ?? this.mobileDragHandleWidth,
       enableHapticFeedbackOnAndroid:
           enableHapticFeedbackOnAndroid ?? this.enableHapticFeedbackOnAndroid,
+      cursorWidth: cursorWidth ?? this.cursorWidth,
+      textScaleFactor: textScaleFactor ?? this.textScaleFactor,
     );
   }
 }

@@ -165,6 +165,7 @@ class _TableBlockComponentWidgetState extends State<TableBlockComponentWidget>
       node: node,
       delegate: this,
       listenable: editorState.selectionNotifier,
+      remoteSelection: editorState.remoteSelections,
       blockColor: editorState.editorStyle.selectionColor,
       supportTypes: const [
         BlockSelectionType.block,
@@ -251,7 +252,7 @@ class _TableBlockComponentWidgetState extends State<TableBlockComponentWidget>
 }
 
 SelectionMenuItem tableMenuItem = SelectionMenuItem(
-  name: AppFlowyEditorL10n.current.table,
+  getName: () => AppFlowyEditorL10n.current.table,
   icon: (editorState, isSelected, style) => SelectionMenuIconWidget(
     icon: Icons.table_view,
     isSelected: isSelected,

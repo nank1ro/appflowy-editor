@@ -81,7 +81,8 @@ class DocumentMarkdownDecoder extends Converter<String, Document> {
 
         while (i < lines.length &&
             (lines[i].trimLeft().startsWith('- ') ||
-                lines[i].trimLeft().startsWith('* ')) &&
+                lines[i].trimLeft().startsWith('* ') ||
+                numberedListRegex.hasMatch(lines[i].trimLeft())) &&
             getIndentLevel(lines[i]) > currentIndent) {
           text += '\n${lines[i]}';
           i++;
@@ -134,9 +135,11 @@ class DocumentMarkdownDecoder extends Converter<String, Document> {
 
   bool isNestedList(String line1, String line2) {
     if ((line1.trimLeft().startsWith('- ') ||
-            line1.trimLeft().startsWith('* ')) &&
+            line1.trimLeft().startsWith('* ') ||
+            numberedListRegex.hasMatch(line1.trimLeft())) &&
         (line2.trimLeft().startsWith('- ') ||
-            line2.trimLeft().startsWith('* '))) {
+            line2.trimLeft().startsWith('* ') ||
+            numberedListRegex.hasMatch(line2.trimLeft()))) {
       return getIndentLevel(line2) > getIndentLevel(line1);
     }
     return false;
@@ -220,7 +223,7 @@ class DocumentMarkdownDecoder extends Converter<String, Document> {
       return numberedListNode(
         attributes: {
           'delta':
-              decoder.convert(line.substring(line.indexOf('.') + 1)).toJson(),
+              decoder.convert(line.substring(line.indexOf('.') + 2)).toJson(),
         },
       );
     }
