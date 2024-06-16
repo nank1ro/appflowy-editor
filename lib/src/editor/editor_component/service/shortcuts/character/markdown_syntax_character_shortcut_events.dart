@@ -17,22 +17,22 @@ final List<CharacterShortcutEvent> markdownSyntaxShortcutEvents = [
   // format italic,
   // _italic_
   // *italic*
-  formatUnderscoreToItalic,
+  // formatUnderscoreToItalic,
   // formatAsteriskToItalic,
 
   // format strikethrough,
   // ~strikethrough~
   // ~~strikethrough~~
-  formatTildeToStrikethrough,
-  formatDoubleTilesToStrikethrough,
+  // formatTildeToStrikethrough,
+  // formatDoubleTilesToStrikethrough,
 
   // format bold, **bold** or __bold__
   // formatDoubleAsterisksToBold,
-  formatDoubleUnderscoresToBold,
+  // formatDoubleUnderscoresToBold,
 
   // format -- into em dash
   // formatDoubleHyphenEmDash,
 
   // format [*](*) to link
-  formatMarkdownLinkToLink,
+  // formatMarkdownLinkToLink,
 ];
