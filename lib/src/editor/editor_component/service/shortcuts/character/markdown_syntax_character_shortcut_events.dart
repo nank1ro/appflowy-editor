@@ -12,13 +12,13 @@ import 'package:appflowy_editor/appflowy_editor.dart';
 
 final List<CharacterShortcutEvent> markdownSyntaxShortcutEvents = [
   // format code, `code`
-  formatBackquoteToCode,
+  // formatBackquoteToCode,
 
   // format italic,
   // _italic_
   // *italic*
   formatUnderscoreToItalic,
-  formatAsteriskToItalic,
+  // formatAsteriskToItalic,
 
   // format strikethrough,
   // ~strikethrough~
@@ -27,11 +27,11 @@ final List<CharacterShortcutEvent> markdownSyntaxShortcutEvents = [
   formatDoubleTilesToStrikethrough,
 
   // format bold, **bold** or __bold__
-  formatDoubleAsterisksToBold,
+  // formatDoubleAsterisksToBold,
   formatDoubleUnderscoresToBold,
 
   // format -- into em dash
-  formatDoubleHyphenEmDash,
+  // formatDoubleHyphenEmDash,
 
   // format [*](*) to link
   formatMarkdownLinkToLink,
